@@ -23,13 +23,23 @@ git checkout tags/<tag id>
 ```
 
 
-Install dependencies and run the app:
+Install dependencies and setup:
 
 ```
 gem install bundler
 bundle
 rake db:migrate
+```
 
+Seed database:
+
+```
+rake db:seed
+```
+
+Run the app:
+
+```
 rails s -p $PORT -b $IP
 ```
 
