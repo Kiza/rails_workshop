@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Attendance Listing</h1>
+
+<% @attendances.each do |attendance| %>
+  <div class="card">
+      <div class="card-block">
+        <h4 class="card-title"><%= attendance.event.title %></h4>
+        <p class="card-text"><%= attendance.user.name %></p>
+        <p><%= link_to 'Show Attendance', attendance_path(attendance), class: 'text-right' %></p>
+        <div class="card-footer text-muted">
+          <%= attendance.event.date %>
+        </div>
+      </div>
+  </div>
+<% end %>
+

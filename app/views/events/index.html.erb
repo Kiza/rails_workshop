@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Events Listing</h1>
+
+
+<p><%= link_to 'New Event', new_event_path, class: 'btn btn-secondary' %></p>
+
+<div class="card-columns">
+  <% @events.each do |event| %>
+    <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">
+            <%= event.title %>
+          </h4>
+          <p class="pull-xs-right"><%= event.attendance_rate %></p>
+          <p class="card-text"><%= event.description %></p>
+          <p><%= link_to 'Show Event', event_path(event), class: 'text-right' %></p>
+          <div class="card-footer text-muted">
+            <%= event.date %>
+          </div>
+        </div>
+    </div>
+    <% end %>
+</div>

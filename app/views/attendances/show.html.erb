@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<div class="jumbotron">
+    <p>
+      <strong>Attendance Event:</strong>
+      <%= @attendance.event.title %>
+    </p>
+
+    <p>
+      <strong>User:</strong>
+      <%= @attendance.user.name %>
+    </p>
+
+    <p>
+      <strong>Attended Event:</strong>
+      <%= @attendance.has_attended ? 'Yes' : 'No' %>
+    </p>
+
+    <div class="pull-xs-right">
+        <%= link_to 'Edit', edit_attendance_path(@attendance), class: 'btn btn-primary' %>
+        <%= link_to 'Back', attendances_path, class: 'btn btn-primary' %>
+    </div>
+</div>

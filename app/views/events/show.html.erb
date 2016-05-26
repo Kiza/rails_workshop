@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<div class="jumbotron">
+    <p>
+      <strong>Title:</strong>
+      <%= @event.title %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @event.description %>
+    </p>
+
+    <p>
+      <strong>Date:</strong>
+      <%= @event.date %>
+    </p>
+
+    <div class="pull-xs-right">
+        <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-primary' %>
+    </div>
+</div>
+
+
+<h3>Admin</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.admin_users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h3>Attendance</h3>
+
+<%= form_tag("/events/#{@event.id}/update_attendance") do |f| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Attended</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @event.student_attendances.each do |attendance| %>
+          <tr>
+            <td><%= attendance.user.name %></td>
+            <td><%= attendance.user.email %></td>
+            <td><%= check_box_tag("attendance[#{attendance.id}]", "true", attendance.has_attended) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="actions pull-xs-right">
+        <%= submit_tag("Update attendance", class: 'btn btn-primary') %>
+    </div>
+<% end %>
