@@ -10,17 +10,20 @@ git clone https://github.com/Kiza/rails_workshop.git
 
 This will clone the entire git repo.
 
-Check the tag list
+Check the tag list:
 
 ```
 git tag -l
 ```
 
-Swith to a specific tag.
+Swith to a specific tag:
 
 ```
 git checkout tags/<tag id>
 ```
+
+
+Install dependencies and run the app:
 
 ```
 gem install bundler
