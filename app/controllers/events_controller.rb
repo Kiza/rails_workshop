@@ -26,7 +26,12 @@ class EventsController < ApplicationController
   def update_attendance
     attended_hash = params[:attendance]
     @event.attendances.each do |attendance|
-      has_attended = attended_hash.key?(attendance.id.to_s)
+      if attended_hash
+        has_attended = attended_hash.key?(attendance.id.to_s)
+      else
+        has_attended = false
+      end
+      
       if has_attended != attendance.has_attended
         if has_attended
           attendance.update(has_attended: true)
