@@ -22,6 +22,28 @@
 </div>
 
 
+<h3>Coach</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Job</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.coaches.each do |c| %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= c.job %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <h3>Admin</h3>
 
 <table class="table">

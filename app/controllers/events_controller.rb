@@ -41,6 +41,14 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    2.times do
+      @event.coaches.build
+    end
+    
+    3.times do
+      attendance = @event.attendances.build(user_type: 'STUDENT')
+      attendance.build_user
+    end
   end
 
   # GET /events/1/edit
@@ -81,6 +89,9 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:title, :description, :date)
+      params.require(:event).permit(
+        :title, :description, :date,
+        attendances_attributes: [:id, :user_type, :_destroy, :has_attended, :user_id], 
+        coaches_attributes: [:id, :name, :job, :_destroy])
     end
 end

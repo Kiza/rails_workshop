@@ -14,8 +14,12 @@ class Event < ActiveRecord::Base
     
      # associations
     has_many :attendances
-    has_many :coaches
+    accepts_nested_attributes_for :attendances, reject_if: lambda { |a| a[:user_id].blank? }, :allow_destroy => true
+    
     has_many :users, through: :attendances
+    
+    has_many :coaches
+    accepts_nested_attributes_for :coaches, reject_if: lambda { |a| a[:name].blank? }, :allow_destroy => true
     
     # validations
     validates :title, presence: true, length: { in: 2..255 }

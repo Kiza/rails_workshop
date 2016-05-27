@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
     
     #associations
-    has_many :attendances
+    has_many :attendances, inverse_of: :user
     has_many :events, through: :attendances
     
     # validations
