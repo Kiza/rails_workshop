@@ -30,49 +30,26 @@
     <h3>Coach<h3>
   </div>
   
+  
   <%= f.fields_for :coaches do |af| %>
-    <div class="field">
-			<%= af.label :name %>
-			<%= af.text_field :name %>
-		</div>
-		
-		<div class="field">
-			<%= af.label :job %>
-			<%= af.text_field :job %>
-		</div>
-		
-		<div class="field">
-			<%= af.check_box :_destroy %>
-			<%= af.label :_destroy, "Remove" %>
-		</div>
-  	<p></p>
+    <div class="fields">
+       <%= render 'coach_fields', f: af %>
+  	</div>
   <% end %>
+  
+  <div><%= link_to_add_fields "Add coach", f, :coaches %></div>
   
   <div>
     <h3>Attendee<h3>
   </div>
   
   <%= f.fields_for :attendances do |af| %>
-    <div class="field">
-    	<%= af.select :user_type, ['ADMIN', 'STUDENT'] %>
-    </div>
-    
-    <%= af.hidden_field :has_attended, value:false %>
-    
-    <div class="field">
-    	<div class="field">
-    			<%= af.label :name %>
-    			<%= af.select :user_id, User.all.collect {|a| [ a.name + " " + a.email, a.id ]}, include_blank: true %>
-    	</div>
-    	
-    	<div class="field">
-    			<%= af.check_box :_destroy %>
-    			<%= af.label :_destroy, "Remove" %>
-    	</div>
+    <div class="fields">
+      <%= render 'attendance_fields', f: af %>
   	</div>
-  	<p></p>
   <% end %>
 
+  <div><%= link_to_add_fields "Add attendee", f, :attendances %></div>
 
   
   <div class="actions">
