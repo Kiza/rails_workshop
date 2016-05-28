@@ -33,23 +33,11 @@
   
   <%= f.fields_for :coaches do |af| %>
     <div class="fields">
-      <div class="field">
-  			<%= af.label :name %>
-  			<%= af.text_field :name %>
-  		</div>
-  		
-  		<div class="field">
-  			<%= af.label :job %>
-  			<%= af.text_field :job %>
-  		</div>
-  		
-  		<div class="field">
-  			<%= af.hidden_field :_destroy %>
-  			<%= link_to "remove", '#', onclick: 'remove_fields(this)' %>
-  		</div>
-    	<p></p>
+       <%= render 'coach_fields', f: af %>
   	</div>
   <% end %>
+  
+  <div><%= link_to_add_fields "Add coach", f, :coaches %></div>
   
   <div>
     <h3>Attendee<h3>

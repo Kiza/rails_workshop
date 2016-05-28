@@ -46,14 +46,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    2.times do
-      @event.coaches.build
-    end
-    
-    3.times do
-      attendance = @event.attendances.build(user_type: 'STUDENT')
-      attendance.build_user
-    end
   end
 
   # GET /events/1/edit
